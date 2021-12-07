@@ -7,7 +7,7 @@
 </head>
 <body>
 
-String: ${value}
+
 
 
 </body>

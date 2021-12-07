@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 import java.util.TreeMap;
 
 
@@ -26,11 +25,14 @@ public class MyRestController {
     }
 
     @PostMapping(value = "/showDetails")
-//    @ResponseBody
-    public String outputForm(HttpServletRequest request, Model model) {
+    @ResponseBody
+    public Request outputForm(HttpServletRequest request, Model model) {
         TreeMap<String, String[]> param = new TreeMap<>(request.getParameterMap());
-        model.addAttribute("value", Request.transformMap(param));
-        return "showDetails";
+        Request req = new Request();
+        String value = Request.transformMap(param);
+        req.setStatus("success");
+        req.setResult("signature", Request.getHash(value.getBytes()));
+        return req;
     }
 
 
