@@ -22,6 +22,7 @@ public class MyClassInterceptor  implements HandlerInterceptor {
 
         // Проверка на заголовок http запроса
         if (!requestKey.equals(token)) {
+            response.getWriter().write("Error 403");
             response.setStatus(403);
             return false;
         }
