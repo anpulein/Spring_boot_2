@@ -29,6 +29,7 @@ public class Request {
         return result;
     }
 
+    // Получаем запрос формы и конвертируем в формат "maneN=valueN"
     public static String transformMap(TreeMap<String, String[]> treeMap) {
         String value = new String();
         Iterator it = treeMap.entrySet().iterator();
@@ -44,6 +45,7 @@ public class Request {
         return value;
     }
 
+    // Конвертация "name1=value1" -> Hmac SHA256
     public static String getHash(byte[] strBytes) {
         String hashValue = "";
         String algoritm = "SHA-256";
